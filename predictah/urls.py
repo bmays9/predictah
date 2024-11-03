@@ -21,4 +21,5 @@ from bet import views as bet_views
 urlpatterns = [
     path('bet/', bet_views.my_bet, name='bet'),
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
 ]

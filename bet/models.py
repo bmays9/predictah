@@ -18,8 +18,6 @@ class Bet(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     stake = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.IntegerField(choices=STATUS, default=0)
-    created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now=True)
     settled_amount =  models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     class Meta:
@@ -38,7 +36,7 @@ class Line(models.Model):
     match_result = models.IntegerField(choices=STATUS, default=0)
     status = models.IntegerField(choices=STATUS, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
-    updated_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     bet = models.ForeignKey(Bet, on_delete=models.CASCADE, related_name="lines")
 
 
@@ -46,4 +44,4 @@ class Line(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return f"{self.home_team} v {self.away_team} | Prediction: {self.prediction}  "
+        return f"{self.home_team} v {self.away_team} | 102: {self.prediction}  "
